@@ -42,4 +42,5 @@ bin/
 .DS_Store
 
 ### AOC inputs ###
-src/main/resources
+src/main/resources/*
+!src/main/resources/.gitkeep
