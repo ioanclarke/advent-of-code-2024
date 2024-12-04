@@ -17,3 +17,11 @@ kotlin {
 application {
     mainClass.set("ioan.MainKt")
 }
+
+dependencies {
+    testImplementation(kotlin("test"))
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
