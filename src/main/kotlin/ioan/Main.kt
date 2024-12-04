@@ -1,16 +1,15 @@
 package ioan
 
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.contract
 import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
     val dayNum = args.firstOrNull()?.toIntOrNull()
     val part = args.getOrNull(1)?.toIntOrNull()
-    if (dayNum !in 1..25 || part !in 1..2) {
-        System.err.println("Usage: ./gradlew run <1..25> <1|2>")
-        exitProcess(1)
-    }
+    validateArgs(dayNum, part)
 
-    val day = getDay(dayNum!!)
+    val day = getDay(dayNum)
 
     val result = if (part == 1) day.part1() else day.part2()
 
@@ -25,3 +24,15 @@ fun getDay(day: Int): Day =
         4 -> Day4
         else -> throw NotImplementedError("Haven't implemented that day yet")
     }
+
+@OptIn(ExperimentalContracts::class)
+fun validateArgs(dayNum: Int?, part: Int?) {
+    contract {
+        returns() implies (dayNum != null && part != null)
+    }
+
+    if (dayNum !in 1..25 || part !in 1..2) {
+        System.err.println("Usage: ./gradlew run <1..25> <1|2>")
+        exitProcess(1)
+    }
+}
