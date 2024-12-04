@@ -2,15 +2,15 @@ package ioan
 
 typealias Report = List<Int>
 
-object Day2 {
+object Day2 : Day{
 
-    fun a(): Int {
+    override fun part1(): Int {
         val lines = readLines(2)
         val reports = parseReports(lines)
         return reports.count(::isSafe)
     }
 
-    fun b(): Int {
+    override fun part2(): Int {
         val lines = readLines(2)
         val reports: List<Report> = parseReports(lines)
         val (safe, unsafe) = reports.partition(::isSafe)

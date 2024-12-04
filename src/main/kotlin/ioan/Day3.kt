@@ -1,8 +1,8 @@
 package ioan
 
-object Day3 {
+object Day3 : Day{
 
-    fun a(): Int {
+    override fun part1(): Int {
         val text = readText(3)
         val validMul = "mul\\((\\d{1,3}),(\\d{1,3})\\)".toRegex()
         return validMul.findAll(text).sumOf {
@@ -10,7 +10,7 @@ object Day3 {
         }
     }
 
-    fun b(): Int {
+    override fun part2(): Int {
         val text = readText(3)
         val needle = "(do\\(\\)|don't\\(\\)|mul\\((\\d{1,3}),(\\d{1,3})\\))".toRegex()
         val results = needle.findAll(text)

@@ -10,16 +10,18 @@ fun main(args: Array<String>) {
         exitProcess(1)
     }
 
-    println(
-        when (dayNum to part) {
-            Pair(1, "a") -> Day1.a()
-            Pair(1, "b") -> Day1.b()
-            Pair(2, "a") -> Day2.a()
-            Pair(2, "b") -> Day2.b()
-            Pair(3, "a") -> Day3.a()
-            Pair(3, "b") -> Day3.b()
-            else -> "Not implemented yet"
-        }
-    )
+    val day = getDay(dayNum!!)
+    val result = if (part == "a") day.part1() else day.part2()
+
+    println(result)
 }
+
+fun getDay(day: Int): Day =
+    when (day) {
+        1 -> Day1
+        2 -> Day2
+        3 -> Day3
+        4 -> Day4
+        else -> throw NotImplementedError("Haven't implemented that day yet")
+    }
 

@@ -2,14 +2,14 @@ package ioan
 
 import kotlin.math.abs
 
-object Day1 {
+object Day1 : Day {
 
-    fun a(): Int {
+    override fun part1(): Int {
         val (list1, list2) = getLists()
         return list1.zip(list2).sumOf { (a, b) -> abs(b - a) }
     }
 
-    fun b(): Int {
+    override fun part2(): Int {
         val (list1, list2) = getLists()
         val list2Counts: Map<Int, Int> = list2.groupingBy { it }.eachCount()
         return list1.sumOf { it * list2Counts.getOrDefault(it, 0) }
