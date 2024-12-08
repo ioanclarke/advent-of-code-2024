@@ -1,6 +1,6 @@
 package ioan
 
 interface Day {
-    fun part1(): Int
-    fun part2(): Int
+    fun part1(): Number
+    fun part2(): Number
 }
