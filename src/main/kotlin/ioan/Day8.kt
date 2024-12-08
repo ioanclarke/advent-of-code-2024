@@ -57,13 +57,13 @@ object Day8 : Day {
             if (fst.x > snd.x) {
                 val northEastPoints = mutableListOf<Point>()
 
-                var count = 1
+                var steps = 1
 
                 while(true) {
-                    val point = Point(fst.x + count * xDiff, fst.y - count * yDiff)
+                    val point = Point(fst.x + steps * xDiff, fst.y - steps * yDiff)
                     if (grid.at(point.x, point.y) != null) {
                         northEastPoints.add(point)
-                        count++
+                        steps++
                     } else {
                         break
                     }
@@ -71,13 +71,13 @@ object Day8 : Day {
 
                 val southWestPoints = mutableListOf<Point>()
 
-                count = 1
+                steps = 1
 
                 while(true) {
-                    val point = Point(fst.x - count * xDiff, fst.y + count * yDiff)
+                    val point = Point(fst.x - steps * xDiff, fst.y + steps * yDiff)
                     if (grid.at(point.x, point.y) != null) {
                         southWestPoints.add(point)
-                        count++
+                        steps++
                     } else {
                         break
                     }
@@ -87,13 +87,13 @@ object Day8 : Day {
             } else {
                 val northWestPoints = mutableListOf<Point>()
 
-                var count = 1
+                var steps = 1
 
                 while(true) {
-                    val point = Point(fst.x - count * xDiff, fst.y - count * yDiff)
+                    val point = Point(fst.x - steps * xDiff, fst.y - steps * yDiff)
                     if (grid.at(point.x, point.y) != null) {
                         northWestPoints.add(point)
-                        count++
+                        steps++
                     } else {
                         break
                     }
@@ -101,13 +101,13 @@ object Day8 : Day {
 
                 val southEastPoints = mutableListOf<Point>()
 
-                count = 1
+                steps = 1
 
                 while(true) {
-                    val point = Point(fst.x + count * xDiff, fst.y + count * yDiff)
+                    val point = Point(fst.x + steps * xDiff, fst.y + steps * yDiff)
                     if (grid.at(point.x, point.y) != null) {
                         southEastPoints.add(point)
-                        count++
+                        steps++
                     } else {
                         break
                     }
@@ -115,7 +115,6 @@ object Day8 : Day {
 
                 northWestPoints + southEastPoints
             }
-
         }
 
         return locations + nonAntennaAntinodes
