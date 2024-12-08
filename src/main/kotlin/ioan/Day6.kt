@@ -19,7 +19,7 @@ object Day6 : Day {
     }
 
     override fun part1(): Int {
-        val grid = buildGrid(readLines(6))
+        val grid = Grid.from(readLines(6))
 
         var currentPosition = getStartingCell(grid)
         var currentDirection = Direction.UP
@@ -53,7 +53,7 @@ object Day6 : Day {
     }
 
     override fun part2(): Int {
-        TODO()
+//        TODO()
         /*
         loop over input:
             replace each non-obstacle and non-starting position with an obstacle
@@ -61,7 +61,7 @@ object Day6 : Day {
             if any two-step sequence happens more than once, the guard must be stuck in a loop
          */
 
-        val grid = buildGrid(readLines(6, test = true))
+        val grid = Grid.from(readLines(6, test = true))
         println(grid)
 
         val startingPosition = getStartingCell(grid)

@@ -52,19 +52,15 @@ object Day4 : Day {
         val grid = buildGrid()
 
         fun northWestToSouthEast(cell: Cell<Char>): Boolean {
-            fun cellsEqual(northWest: Char, southEast: Char): Boolean {
-                return grid.at(cell.x - 1, cell.y - 1)?.value == northWest &&
-                        grid.at(cell.x + 1, cell.y + 1)?.value == southEast
-            }
+            fun cellsEqual(northWest: Char, southEast: Char): Boolean =
+                grid.at(cell.x - 1, cell.y - 1)?.value == northWest && grid.at(cell.x + 1, cell.y + 1)?.value == southEast
 
             return cellsEqual(northWest = 'M', southEast = 'S') || cellsEqual(northWest = 'S', southEast = 'M')
         }
 
         fun southWestToNorthEast(cell: Cell<Char>): Boolean {
-            fun cellsEqual(northWest: Char, southEast: Char): Boolean {
-                return grid.at(cell.x - 1, cell.y + 1)?.value == northWest &&
-                        grid.at(cell.x + 1, cell.y - 1)?.value == southEast
-            }
+            fun cellsEqual(northWest: Char, southEast: Char): Boolean =
+                grid.at(cell.x - 1, cell.y + 1)?.value == northWest && grid.at(cell.x + 1, cell.y - 1)?.value == southEast
 
             return cellsEqual(northWest = 'M', southEast = 'S') || cellsEqual(northWest = 'S', southEast = 'M')
         }

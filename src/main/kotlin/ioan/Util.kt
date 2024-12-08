@@ -22,9 +22,13 @@ fun <T> List<T>.withoutIdx(idx: Int): List<T> =
 private fun getFileName(day: Int, test: Boolean) =
     if (test) "day$day-test.txt" else "day$day.txt"
 
-fun buildGrid(lines: List<String>): Grid<Char> {
-    val cells = lines.map { it.toList() }
-    return Grid(cells)
-}
 
 fun Int.pow(exponent: Int): Int = this.toDouble().pow(exponent.toDouble()).toInt()
+
+fun <T> generatePairs(source: List<T>): List<Pair<T, T>> {
+    val pairs = mutableListOf<Pair<T, T>>()
+    source.forEachIndexed { idx, e ->
+        source.subList(idx + 1, source.size).forEach { pairs.add(e to it) }
+    }
+    return pairs
+}
