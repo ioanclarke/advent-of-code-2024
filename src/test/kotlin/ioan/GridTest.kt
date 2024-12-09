@@ -20,6 +20,17 @@ class GridTest {
         assertEquals(null, grid.at(4, 1))
     }
 
+
+    @Test
+    fun `with - valid coord`() {
+        val grid = Grid(listOf(listOf("a", "b", "c")))
+
+        assertEquals(
+            Grid(listOf(listOf("a", "d", "c"))),
+            grid.with(Cell("d", 2, 1))
+        )
+    }
+
     @Test
     fun iterator() {
         val grid = Grid(

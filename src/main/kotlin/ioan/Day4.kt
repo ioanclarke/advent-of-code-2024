@@ -41,7 +41,6 @@ object Day4 : Day {
                     grid.at(cell.x + movements.x.second, cell.y + movements.y.second)?.value == 'A' &&
                     grid.at(cell.x + movements.x.third, cell.y + movements.y.third)?.value == 'S'
 
-
         return grid
             .filter { it.value == 'X' }
             .sumOf { cell -> Movements.entries.map { spellsXmas(cell, it) }.count { it } }

@@ -6,12 +6,12 @@ import kotlin.test.assertEquals
 class Day8Test {
 
     @Test
-    fun `part 1 - regression`() {
+    fun part1() {
         assertEquals(220, Day8.part1())
     }
 
     @Test
-    fun `part 2 - regression`() {
+    fun part2() {
         assertEquals(813, Day8.part2())
     }
 }

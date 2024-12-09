@@ -3,15 +3,15 @@ package ioan
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class Day5Test {
+class Day1Test {
 
     @Test
     fun part1() {
-        assertEquals(4959, Day5.part1())
+        assertEquals(2378066, Day1.part1())
     }
 
     @Test
     fun part2() {
-        assertEquals(4655, Day5.part2())
+        assertEquals(18934359, Day1.part2())
     }
 }

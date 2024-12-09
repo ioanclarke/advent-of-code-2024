@@ -23,5 +23,4 @@ object Day1 : Day {
             .unzip()
             .let { (fst, snd) -> Pair(fst.sorted(), snd.sorted()) }
     }
-
 }

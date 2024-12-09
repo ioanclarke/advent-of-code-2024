@@ -6,24 +6,21 @@ import kotlin.io.path.readLines
 import kotlin.io.path.readText
 import kotlin.math.pow
 
-val resourcesDir: Path = Paths.get("").resolve("src/main/resources")
+private val resourcesDir: Path = Paths.get("").resolve("src/main/resources")
 
-fun readText(day: Int, test: Boolean = false): String {
-    return resourcesDir.resolve(getFileName(day, test)).readText()
-}
+fun readText(day: Int, test: Boolean = false): String = getFile(day, test).readText()
 
-fun readLines(day: Int, test: Boolean = false): List<String> {
-    return resourcesDir.resolve(getFileName(day, test)).readLines()
-}
+fun readLines(day: Int, test: Boolean = false): List<String> = getFile(day, test).readLines()
+
+private fun getFile(day: Int, test: Boolean): Path =
+    resourcesDir.resolve(if (test) "day$day-test.txt" else "day$day.txt")
 
 fun <T> List<T>.withoutIdx(idx: Int): List<T> =
     this.filterIndexed { index, _ -> index != idx }
 
-private fun getFileName(day: Int, test: Boolean) =
-    if (test) "day$day-test.txt" else "day$day.txt"
-
-
 fun Int.pow(exponent: Int): Int = this.toDouble().pow(exponent.toDouble()).toInt()
+
+val Int.isEven: Boolean get() = this % 2 == 0
 
 fun <T> generatePairs(source: List<T>): List<Pair<T, T>> {
     val pairs = mutableListOf<Pair<T, T>>()

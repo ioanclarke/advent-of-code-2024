@@ -7,7 +7,7 @@ typealias Frequency = Char
 object Day8 : Day {
 
     override fun part1(): Int {
-        val grid = Grid.from(readLines(8, test = false))
+        val grid = Grid.from(readLines(8))
         val antennas: Map<Frequency, List<Point>> = buildAntennas(grid)
         return antennas.entries
             .flatMap { getAntinodeLocations1(it.value) }
@@ -37,7 +37,7 @@ object Day8 : Day {
     }
 
     override fun part2(): Int {
-        val grid = Grid.from(readLines(8, test = false))
+        val grid = Grid.from(readLines(8))
         val antennas: Map<Frequency, List<Point>> = buildAntennas(grid)
         return antennas.entries
             .flatMap { getAntinodeLocations2(it.value, grid) }
