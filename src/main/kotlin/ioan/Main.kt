@@ -27,6 +27,8 @@ fun getDay(day: Int): Day =
         7 -> Day7
         8 -> Day8
         9 -> Day9
+        11 -> Day11
+        13 -> Day13
         else -> throw NotImplementedError("Haven't implemented that day yet")
     }
 
