@@ -1,43 +1,29 @@
 package ioan
 
-import ioan.Day10.ScoreOrRating.RATING
-import ioan.Day10.ScoreOrRating.SCORE
-
 object Day10 : Day {
 
-    enum class ScoreOrRating(val requiresDistinctNeighbours: Boolean) {
-        SCORE(true),
-        RATING(false)
-    }
+    override fun part1(): Int = solve(distinctNeighbours = true)
 
-    override fun part1(): Int {
+    override fun part2(): Int = solve(distinctNeighbours = false)
+
+    private fun solve(distinctNeighbours: Boolean): Int {
         val grid = Grid(readLines(10).map { it.toDigits() })
         return grid
             .filter { it.value == 0 }
-            .sumOf { find(SCORE, it, grid) }
+            .sumOf { cell ->
+                (1..9).fold(listOf(cell)) { neighbours, height ->
+                    neighbours
+                        .flatMap {
+                            listOfNotNull(
+                                grid.at(it.x, it.y - 1),
+                                grid.at(it.x + 1, it.y),
+                                grid.at(it.x, it.y + 1),
+                                grid.at(it.x - 1, it.y)
+                            )
+                        }
+                        .filter { it.value == height }
+                        .let { if (distinctNeighbours) it.distinct() else it }
+                }.size
+            }
     }
-
-    override fun part2(): Int {
-        val grid = Grid(readLines(10).map { it.toDigits() })
-        return grid
-            .filter { it.value == 0 }
-            .sumOf { find(RATING, it, grid) }
-    }
-
-    private fun find(type: ScoreOrRating, cell: Cell<Int>, grid: Grid<Int>): Int =
-        (1..9).fold(listOf(cell)) { acc, height ->
-            getNeighbours(acc, grid, height, distinct = type.requiresDistinctNeighbours)
-        }.size
-
-    private fun getNeighbours(cells: List<Cell<Int>>, grid: Grid<Int>, value: Int, distinct: Boolean): List<Cell<Int>> {
-        val neighbours = cells.map { it.neighbours(grid) }.flatten().filter { it.value == value }
-        return if (distinct) neighbours.distinct() else neighbours
-    }
-
-    private fun Cell<Int>.neighbours(grid: Grid<Int>): List<Cell<Int>> = listOfNotNull(
-        grid.at(this.x, this.y - 1),
-        grid.at(this.x + 1, this.y),
-        grid.at(this.x, this.y + 1),
-        grid.at(this.x - 1, this.y)
-    )
 }
