@@ -57,7 +57,7 @@ object Day9 : Day {
     }
 
     private fun buildDiskMap(): Pair<MutableList<Long>, Map<Long, Int>> {
-        val diskMap = readText(9).trim().chunked(1).map { it.toInt() }
+        val diskMap = readText(9).toDigits()
         val expandedDiskMap = mutableListOf<Long>()
         val fileSizes = mutableMapOf<Long, Int>()
         diskMap.forEachIndexed { idx, length ->

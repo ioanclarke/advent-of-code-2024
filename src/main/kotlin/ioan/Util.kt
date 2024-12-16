@@ -22,6 +22,12 @@ fun Int.pow(exponent: Int): Int = this.toDouble().pow(exponent.toDouble()).toInt
 
 val Int.isEven: Boolean get() = this % 2 == 0
 
+val Long.isEven: Boolean get() = this % 2 == 0L
+
+val Int.digitCount: Int get() = this.toString().length
+
+val Long.digitCount: Int get() = this.toString().length
+
 fun <T> generatePairs(source: List<T>): List<Pair<T, T>> {
     val pairs = mutableListOf<Pair<T, T>>()
     source.forEachIndexed { idx, e ->
@@ -29,3 +35,5 @@ fun <T> generatePairs(source: List<T>): List<Pair<T, T>> {
     }
     return pairs
 }
+
+fun String.toDigits(): List<Int> = this.trim().chunked(1).map { it.toInt() }
