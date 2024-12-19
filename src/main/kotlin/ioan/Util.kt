@@ -19,6 +19,7 @@ fun <T> List<T>.withoutIdx(idx: Int): List<T> =
     this.filterIndexed { index, _ -> index != idx }
 
 fun Int.pow(exponent: Int): Int = this.toDouble().pow(exponent.toDouble()).toInt()
+fun Int.powLong(exponent: Long): Long = this.toDouble().pow(exponent.toDouble()).toLong()
 
 val Int.isEven: Boolean get() = this % 2 == 0
 

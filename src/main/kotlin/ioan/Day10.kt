@@ -13,14 +13,7 @@ object Day10 : Day {
             .sumOf { cell ->
                 (1..9).fold(listOf(cell)) { neighbours, height ->
                     neighbours
-                        .flatMap {
-                            listOfNotNull(
-                                grid.at(it.x, it.y - 1),
-                                grid.at(it.x + 1, it.y),
-                                grid.at(it.x, it.y + 1),
-                                grid.at(it.x - 1, it.y)
-                            )
-                        }
+                        .flatMap { it.neighbours(grid) }
                         .filter { it.value == height }
                         .let { if (distinctNeighbours) it.distinct() else it }
                 }.size
